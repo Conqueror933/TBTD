@@ -8,8 +8,8 @@ class World
 {
 public:
 	World(float width, float height);
-	void SpawnTower(Vec2<float> c, Vec2<float> size, Mesh* mesh, std::string name, float damage, float range, float firerate);
-	void SpawnEnemy(Vec2<float> c, Vec2<float> size, Mesh* mesh, std::string name, float hp, float speed);
+	void SpawnTower(TowerCtorList);
+	void SpawnEnemy(EnemyCtorList);
 	void Update();
 
 private:

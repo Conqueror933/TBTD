@@ -4,18 +4,21 @@
 #include "Vec2.h"
 #include "Mesh.h"
 
+#define Objectctorlist Vec2<float> coordinates, Vec2<float> size, std::string name, Mesh* mesh
+#define ObjectInit coordinates, size, name, mesh
+
 class Object
 {
 public:
-	Object(Vec2<float> c, Vec2<float> size, Mesh* mesh, std::string name)
+	Object(Objectctorlist)
 		:
-		cor(c),
+		cor(coordinates),
 		size(size),
-		mesh(mesh),
-		name(name)
+		name(name),
+		mesh(mesh)
 	{
 	}
-	virtual void Update() = 0;
+	//virtual void Update() = 0;
 
 //protected:
 	Vec2<float> cor;

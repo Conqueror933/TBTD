@@ -1,11 +1,11 @@
 #include "Tower.h"
 
-Tower::Tower(Vec2<float> c, Vec2<float> size, Mesh* mesh, std::string name, float damage, float range, float firerate)
+Tower::Tower(TowerCtorList)
 	:
-	Object(c, size, mesh, name),
+	Object(ObjectInit),
 	damage(damage),
 	range(range),
-	firerate(firerate)
+	time_per_attack(time_per_attack)
 {
 	std::cout << "Tower " << name << " created." << std::endl;
 }
@@ -15,9 +15,9 @@ Tower::~Tower()
 	std::cout << "Tower " << name << " destroyed." << std::endl;
 }
 
-void Tower::Update()
+void Tower::Update(Enemy& target)
 {
-
+	Shoot(target);
 }
 
 void Tower::Shoot(Enemy& target)
@@ -28,4 +28,15 @@ void Tower::Shoot(Enemy& target)
 		target.takeDamage += damage;
 		std::cout << "Dealt " << damage << " to " << target.name << std::endl;
 	}
+}
+
+PoisonTower::PoisonTower(PoisonTowerCtorList)
+	:
+	Tower(TowerInit),
+	tickdamage(tickdamage), 
+	tickrate(tickrate), 
+	duration(duration), 
+	smart_targeting(smart_targeting), 
+	stacking_poison(stacking_poison)
+{
 }

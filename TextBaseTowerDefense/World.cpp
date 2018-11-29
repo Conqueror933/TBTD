@@ -7,14 +7,15 @@ World::World(float width, float height)
 {
 }
 
-void World::SpawnTower(Vec2<float> c, Vec2<float> size, Mesh* mesh, std::string name, float damage, float range, float firerate) //params
+void World::SpawnTower(TowerCtorList)
 {
-	towers.emplace_back(std::make_unique<Tower>(c, size, mesh, name, damage, range, firerate));
+	towers.emplace_back(std::make_unique<Tower>(TowerInit));
+	//towers.emplace_back(std::make_unique<PoisonTower>(TowerInit));
 }
 
-void World::SpawnEnemy(Vec2<float> c, Vec2<float> size, Mesh* mesh, std::string name, float hp, float speed)
+void World::SpawnEnemy(EnemyCtorList)
 {
-	enemies.emplace_back(std::make_unique<Enemy>(c, size, mesh, name, hp, speed));
+	enemies.emplace_back(std::make_unique<Enemy>(EnemyInit));
 }
 
 void World::Update()
@@ -25,7 +26,7 @@ void World::Update()
 	{
 		for (int j = 0; j < enemycount; j++)
 		{
-			towers[i]->Shoot(*enemies[j]);
+			towers[i]->Update(*enemies[j]);
 		}
 	}
 
@@ -33,20 +34,20 @@ void World::Update()
 	{
 		enemies[i]->Update();
 	}
-	/*towers[0]->Shoot(*enemies[0]);
-	towers[1]->Shoot(*enemies[0]);
-	enemies[0]->Update();
-	enemies[1]->Update();*/
 
-	for (int i = 0; i < 1;)
+	for (int i = 0; i < enemycount;)
 	{
-		if (enemies[i]->GetDestroy())
+		if (!enemies.empty())
 		{
-			enemies.erase(enemies.begin()+i);
-		}
-		else
-		{
-			i++;
+			if (enemies[i]->GetDestroy())
+			{
+				enemies.erase(enemies.begin() + i);
+				enemycount--;
+			}
+			else
+			{
+				i++;
+			}
 		}
 	}
 }
