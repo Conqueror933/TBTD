@@ -1,23 +1,30 @@
 #include "World.h"
 #include <iostream>
 
-World world(50.0f, 50.0f);
 Mesh* mesh;
+Object start{ { 0.0f, 0.0f },{ 1.0f,1.0f }, "Start", mesh, };
+Object end{ { 50.0f, 50.0f },{ 1.0f,1.0f }, "End", mesh, };
+World world(50.0f, 50.0f, 50, start, end);
 
 void testcode()
 {
-	world.SpawnTower({ 20.0f, 20.0f }, { 5.0f,5.0f }, "Sniper", mesh, SniperTowerLvl1);
-	world.SpawnTower({ 21.0f, 20.0f }, { 5.0f,5.0f }, "AOE", mesh, AOETowerLvl1);
+	world.SpawnTower({ 20.0f, 20.0f }, { 5.0f,5.0f }, "AOE", mesh, AOETowerLvl1);
+	world.SpawnTower({ 21.0f, 20.0f }, { 5.0f,5.0f }, "Sniper", mesh, SniperTowerLvl1);
+	world.SpawnTower({ 22.0f, 20.0f }, { 5.0f,5.0f }, "Shock", mesh, ShockTowerLvl1);
 	world.SpawnEnemy({ 23.0f, 20.0f }, { 5.0f,5.0f }, "Goblin", mesh, Goblin);
-	world.SpawnEnemy({ 24.0f, 20.0f }, { 5.0f,5.0f }, "Imp", mesh, Imp);
-
-	world.Update();
+	world.SpawnEnemy({ 24.0f, 20.0f }, { 5.0f,5.0f }, "Imp1", mesh, Imp);
+	world.SpawnEnemy({ 24.0f, 21.0f }, { 5.0f,5.0f }, "Imp2", mesh, Imp);
+	world.SpawnEnemy({ 24.0f, 22.0f }, { 5.0f,5.0f }, "Imp3", mesh, Imp);
+	world.SpawnEnemy({ 24.0f, 23.0f }, { 5.0f,5.0f }, "Imp4", mesh, Imp);
+	world.SpawnEnemy({ 24.0f, 23.0f }, { 5.0f,5.0f }, "ArmoredGoblin", mesh, ArmoredGoblin);
+	world.SpawnEnemy({ 24.0f, 23.0f }, { 5.0f,5.0f }, "Riese", mesh, Riese);
 }
+
 int main()
 {
 
 	testcode();
-
+	while (world.Update() != 0);
 	world.~World();
 	std::cin.get();
 	return 0;

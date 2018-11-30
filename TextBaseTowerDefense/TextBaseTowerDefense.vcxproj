@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FrameTimer.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Mesh.h" />

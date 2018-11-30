@@ -19,6 +19,11 @@ public:
 	{
 	}
 	//virtual void Update() = 0;
+	void Update()
+	{
+		//mob gets to end, dies, lifes -1
+		//spawn mobs at start
+	}
 
 //protected:
 	Vec2<float> cor;
@@ -26,4 +31,3 @@ public:
 	Mesh* mesh;
 	std::string name;
 };
-

@@ -14,14 +14,20 @@ public:
 	~Tower();
 
 public:
-	void Update(std::vector<Event> events);
+	int Update(std::vector<Event>& events);
 	void Shoot(Enemy& target);
 	int GetRange();
+	float time_passed = 0.0f;
+	float GetTimePerAttack();
 
 private:
+	int max_targets;
+	int attackcount;
 	int damage;
-	int range;
 	float time_per_attack;
+	int range;
+	int price;
+	//std::weak_ptr<Event> lastTarget;
 };
 
 class PoisonTower : public Tower

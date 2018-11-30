@@ -4,7 +4,9 @@ Enemy::Enemy(EnemyCtorList)
 	:
 	Object(ObjectInit),
 	hp(hp),
-	speed(speed)
+	speed(speed),
+	armor(armor),
+	killvalue(killvalue)
 {
 	std::cout << "Enemy " << name << " created." << std::endl;
 }
@@ -14,7 +16,7 @@ Enemy::~Enemy()
 	std::cout << "Enemy " << name << " destroyed." << std::endl;
 }
 
-void Enemy::Update()
+bool Enemy::Update()
 {
 	hp -= takeDamage;
 	std::cout << "Enemy " << name << " took " << takeDamage << " damage and has " << hp << " left." << std::endl;
@@ -24,6 +26,7 @@ void Enemy::Update()
 		std::cout << name << " died." << std::endl;
 	}
 	takeDamage = 0;
+	return destroy;
 }
 
 bool Enemy::GetDestroy()
@@ -34,6 +37,11 @@ bool Enemy::GetDestroy()
 int Enemy::GetHp()
 {
 	return hp;
+}
+
+int Enemy::GetArmor()
+{
+	return armor;
 }
 
 void Enemy::Walk()

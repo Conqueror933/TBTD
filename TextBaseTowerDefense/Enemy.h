@@ -11,10 +11,11 @@ public:
 	~Enemy();
 
 public:
-	void Update();
+	bool Update();
 	int takeDamage = 0;
 	bool GetDestroy();
 	int GetHp();
+	int GetArmor();
 
 private:
 	void Walk();
@@ -22,6 +23,8 @@ private:
 private:
 	int hp;
 	float speed;
+	int armor;
+	int killvalue;
 	bool destroy = false;
 };
 
