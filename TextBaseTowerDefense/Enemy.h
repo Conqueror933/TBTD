@@ -14,6 +14,7 @@ public:
 	void Update();
 	int takeDamage = 0;
 	bool GetDestroy();
+	int GetHp();
 
 private:
 	void Walk();

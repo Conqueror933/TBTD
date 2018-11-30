@@ -22,7 +22,29 @@ void World::Update()
 {
 	int towercount = towers.end() - towers.begin();
 	int enemycount = enemies.end() - enemies.begin();
+
 	for (int i = 0; i < towercount; i++)
+	{
+		int r = towers[i]->GetRange();
+		std::vector<Event> events;
+		for (int j = 0; j < enemycount; j++)
+		{
+			if (r >= towers[i]->cor.Distance(enemies[j]->cor))
+			{
+				Event e = {*enemies[j], *towers[i] };
+				events.push_back(e);
+			}
+		}
+		towers[i]->Update(events);
+	}
+
+
+
+
+
+
+
+	/*for (int i = 0; i < towercount; i++)
 	{
 		for (int j = 0; j < enemycount; j++)
 		{
@@ -49,5 +71,5 @@ void World::Update()
 				i++;
 			}
 		}
-	}
+	}*/
 }

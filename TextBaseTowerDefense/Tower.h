@@ -1,6 +1,8 @@
 #pragma once
+#include <vector>
 #include "Object.h"
 #include "Enemy.h"
+#include "Event.h"
 
 #define TowerCtorList  Objectctorlist, int max_targets, int attackcount, int damage, float time_per_attack, int range, int price
 #define TowerInit ObjectInit, max_targets, attackcount, damage, time_per_attack, range, price
@@ -12,8 +14,9 @@ public:
 	~Tower();
 
 public:
-	void Update(Enemy& target);
+	void Update(std::vector<Event> events);
 	void Shoot(Enemy& target);
+	int GetRange();
 
 private:
 	int damage;

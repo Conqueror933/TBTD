@@ -31,6 +31,11 @@ bool Enemy::GetDestroy()
 	return destroy;
 }
 
+int Enemy::GetHp()
+{
+	return hp;
+}
+
 void Enemy::Walk()
 {
 	//check path

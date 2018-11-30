@@ -3,6 +3,7 @@
 #include <memory>
 #include "Tower.h"
 #include "Enemy.h"
+#include "Event.h"
 
 class World
 {
@@ -14,6 +15,6 @@ public:
 
 private:
 	Vec2<float> size;
-	std::vector<std::unique_ptr<Tower>> towers;
-	std::vector<std::unique_ptr<Enemy>> enemies;
+	std::vector<std::shared_ptr<Tower>> towers;
+	std::vector<std::shared_ptr<Enemy>> enemies;
 };

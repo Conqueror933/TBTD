@@ -15,9 +15,10 @@ Tower::~Tower()
 	std::cout << "Tower " << name << " destroyed." << std::endl;
 }
 
-void Tower::Update(Enemy& target)
+void Tower::Update(std::vector<Event> events)
 {
-	Shoot(target);
+	//check target hp, shoot if above 0
+	//Shoot(target);
 }
 
 void Tower::Shoot(Enemy& target)
@@ -28,6 +29,11 @@ void Tower::Shoot(Enemy& target)
 		target.takeDamage += damage;
 		std::cout << "Dealt " << damage << " to " << target.name << std::endl;
 	}
+}
+
+int Tower::GetRange()
+{
+	return range;
 }
 
 PoisonTower::PoisonTower(PoisonTowerCtorList)
