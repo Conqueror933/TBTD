@@ -1,13 +1,13 @@
 #include "World.h"
 
 
-World::World(float width, float height, int lifes, Object start, Object end)
+World::World(WorldCtorList)
 	:
 	size(width, height),
-	lifes(lifes),
-	start(start),
-	end(end)
+	lifes(lifes)
 {
+	start = std::make_unique<Start>(startcor, startsize, startname, startmesh);
+	end = std::make_unique<End>(endcor, endsize, endname, endmesh);
 }
 
 void World::SpawnTower(TowerCtorList)
@@ -21,14 +21,13 @@ void World::SpawnEnemy(EnemyCtorList)
 	enemies.emplace_back(std::make_unique<Enemy>(EnemyInit));
 }
 
-int World::Update()
+int World::Step()
 {
 	const float dt = ft.Mark();
 	//std::cout << dt << std::endl;
 	int towercount = towers.end() - towers.begin();
 	int enemycount = enemies.end() - enemies.begin();
 
-	int death = 0;
 	for (int i = 0; i < towercount; i++)
 	{
 		//std::cout << "loop 1" << std::endl;
@@ -43,53 +42,36 @@ int World::Update()
 				float dist = towers[i]->cor.Distance(enemies[j]->cor);
 				if (r >= dist)
 				{
-					//Event e = {*enemies[j], *towers[i] };
-					events.emplace_back(Event{ *enemies[j], *towers[i], dist });
+					events.emplace_back(Event{ *enemies[j], *towers[i], dist }); //event for max_targets
 					//std::cout << "Emplaced an Event." << std::endl;
-
-					//get rid of event bullshit
-					/*if(towers[i]->Update(enemies[j]))
-					{
-					enemies.erase(enemies.begin() + j);
-					//instead of erase, swap with last and .pop_back();
-					enemycount--;
-					}
-					else
-					{
-					j++;
-					}*/
 				}
 			}
-			death += towers[i]->Update(events);
+			towers[i]->Update(events);
 		}
 		towers[i]->time_passed += dt;
 	}
 
-
-
-	//event for attacks and target selection e.g. multishot tower
-	//max_targets
-
-
-	if (death > 0)
+	for (int i = 0; i < enemycount;)
 	{
-		for (int i = 0; i < enemycount;)
+		if (!enemies.empty())
 		{
-			if (!enemies.empty())
+			if (enemies[i]->GetDestroy())
 			{
-				if (enemies[i]->GetDestroy())
-				{
-					enemies.erase(enemies.begin() + i);
-					enemycount--;
-				}
-				else
-				{
-					i++;
-				}
+				enemies.erase(enemies.begin() + i);
+				enemycount--;
+			}
+			else
+			{
+				i++;
 			}
 		}
 	}
 
+	for (int i = 0; i < enemycount; i++)
+	{
+		enemies[i]->Update(*end, dt);
+	}
+	
 	return enemycount;
 
 
@@ -122,4 +104,9 @@ int World::Update()
 			}
 		}
 	}*/
+}
+
+Vec2<float> World::GetStart()
+{
+	return start->cor;
 }

@@ -11,11 +11,14 @@ public:
 	~Enemy();
 
 public:
-	bool Update();
-	int takeDamage = 0;
+	void Update(End& end, float dt);
+	void Walk(End& end, float dt);
+
+public:
 	bool GetDestroy();
 	int GetHp();
 	int GetArmor();
+	void TakeDamage(int dmg);
 
 private:
 	void Walk();

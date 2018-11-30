@@ -16,17 +16,24 @@ Enemy::~Enemy()
 	std::cout << "Enemy " << name << " destroyed." << std::endl;
 }
 
-bool Enemy::Update()
+void Enemy::Update(End& end, float dt)
 {
-	hp -= takeDamage;
-	std::cout << "Enemy " << name << " took " << takeDamage << " damage and has " << hp << " left." << std::endl;
 	if (hp <= 0)
 	{
 		destroy = true;
 		std::cout << name << " died." << std::endl;
 	}
-	takeDamage = 0;
-	return destroy;
+
+	Walk(end, dt);
+}
+
+void Enemy::Walk(End& end, float dt)
+{
+	//move to Vec2(end)
+	//speed*dt
+	//calculate new cor
+	cor = cor.Move(this->cor, end.cor, speed*dt);
+	//std::cout << "Enemy " << speed * dt;// << std::endl;
 }
 
 bool Enemy::GetDestroy()
@@ -42,6 +49,12 @@ int Enemy::GetHp()
 int Enemy::GetArmor()
 {
 	return armor;
+}
+
+void Enemy::TakeDamage(int dmg)
+{
+	std::cout << "Enemy " << name << " took damage and has " << hp << " left." << std::endl;
+	hp -= dmg;
 }
 
 void Enemy::Walk()

@@ -19,15 +19,40 @@ public:
 	{
 	}
 	//virtual void Update() = 0;
-	void Update()
-	{
-		//mob gets to end, dies, lifes -1
-		//spawn mobs at start
-	}
 
 //protected:
 	Vec2<float> cor;
 	Vec2<float> size;
 	Mesh* mesh;
 	std::string name;
+};
+
+class Start : public Object
+{
+public:
+	Start(Objectctorlist)
+		:
+		Object(ObjectInit)
+	{
+	}
+
+	void Update()
+	{
+		//spawn mobs at start
+	}
+};
+
+class End : public Object
+{
+public:
+	End(Objectctorlist)
+		:
+		Object(ObjectInit)
+	{
+	}
+
+	void Update()
+	{
+		//mob gets to end, dies, lifes -1
+	}
 };

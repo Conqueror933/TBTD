@@ -1,4 +1,6 @@
 #pragma once
+#include <cmath>
+#include <iostream>
 
 template<typename T>
 class Vec2
@@ -65,6 +67,7 @@ public: //Math
 		return Vec2<T>{this.x / rhs.x, this.y / rhs.y};
 	}
 
+public: //Utility
 	float Distance(const Vec2<T> target)
 	{
 		if (x < target.x)
@@ -84,6 +87,18 @@ public: //Math
 			return (x - target.x) + (y - target.y);
 		}
 		
+	}
+	Vec2<T> Move(const Vec2<T> start, const Vec2<T> end, float speed)
+	{
+		float x_dist = end.x - start.x;
+		float y_dist = end.y - start.y;
+		float length = std::sqrt(x_dist * x_dist + y_dist * y_dist);
+		x_dist /= length;
+		y_dist /= length;
+		x_dist *= speed;
+		y_dist *= speed;
+		//std::cout << "moved to " << start.x + x_dist << "/" << start.y + y_dist << std::endl;
+		return Vec2<T>{start.x + x_dist, start.y + y_dist};
 	}
 
 private:

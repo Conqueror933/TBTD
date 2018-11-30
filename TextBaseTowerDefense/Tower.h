@@ -14,7 +14,7 @@ public:
 	~Tower();
 
 public:
-	int Update(std::vector<Event>& events);
+	void Update(std::vector<Event>& events);
 	void Shoot(Enemy& target);
 	int GetRange();
 	float time_passed = 0.0f;
