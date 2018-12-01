@@ -23,8 +23,8 @@ public:
 //protected:
 	Vec2<float> cor;
 	Vec2<float> size;
-	Mesh* mesh;
 	std::string name;
+	Mesh* mesh;
 };
 
 class Start : public Object

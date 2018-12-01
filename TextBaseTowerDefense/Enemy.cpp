@@ -18,12 +18,18 @@ Enemy::~Enemy()
 
 void Enemy::Update(End& end, float dt)
 {
+	time_passed += dt;
+	if (time_passed > 1.0f)
+	{
+		std::cout << "Enemy " << name << " has " << hp << " left." << std::endl;
+		time_passed = 0.0f;
+	}
+
 	if (hp <= 0)
 	{
 		destroy = true;
 		std::cout << name << " died." << std::endl;
 	}
-
 	Walk(end, dt);
 }
 
@@ -53,7 +59,6 @@ int Enemy::GetArmor()
 
 void Enemy::TakeDamage(int dmg)
 {
-	std::cout << "Enemy " << name << " took damage and has " << hp << " left." << std::endl;
 	hp -= dmg;
 }
 

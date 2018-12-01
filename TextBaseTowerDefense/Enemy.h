@@ -29,12 +29,13 @@ private:
 	int armor;
 	int killvalue;
 	bool destroy = false;
+	float time_passed = 0.0f;
 };
 
 // PARAMS: hp, speed, armor, killvalue
 
-#define Goblin			1000, 5.0f,  0, 10 
-#define Riese			2500, 2.0f, 20, 25 
-#define ArmoredGoblin	1000, 4.5f, 50, 15
-#define Imp				 200, 7.0f,  0,  2
-#define ArmoredImp		 200, 6.5f, 20,  4
+#define M_Goblin			1000, 5.0f,  0, 10 
+#define M_Riese			2500, 2.0f, 20, 25 
+#define M_ArmoredGoblin	1000, 4.5f, 50, 15
+#define M_Imp				 200, 7.0f,  0,  2
+#define M_ArmoredImp		 200, 6.5f, 20,  4

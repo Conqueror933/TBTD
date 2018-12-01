@@ -2,7 +2,9 @@
 
 int main()
 {
-	std::make_unique<Game>()->Go();
+	//std::make_unique<Game>()->Go();
+	Game g;
+	g.Go();
 	return 0;
 }
 
@@ -63,5 +65,21 @@ Riese			(2500hp, 2.0 speed, 20 armor, 25 killvalue)
 ArmoredGoblin	(1000hp, 4.5 speed, 50 armor, 15 killvalue)
 Imp				( 200hp, 7.0 speed,  0 armor, 2 killvalue)
 ArmoredImp		( 200hp, 6.5 speed, 20 armor, 4 killvalue)
+
+*/
+
+/*
+ich hab das mesh, ich brauch n vector von allen meshes, dann bekommt jeder tower nen pointer zu dem mesh von dessen typ er ist
+speicher ich diesen mesh pointer in Object, Tower oder DerivedTower ? man würde doch meinen in Object, weil das dahin gehört richtig?
+die welt hat ein object und dieses hat nen skin den ich male, völlig irrelevant was 'under the hood' abgeht
+deshalb hat ja jeder Tower auch n underlying Object
+folglich:
+muss ich den mesh vector in world? game? (Object?) storen, und somit in den constructor prozess passen, is das n unique pointer?
+std::vector<Mesh*>[i] == AOETowerLvl1.mesh*
+ok das is die liste von allen mesh pointern... wo sind die meshes? also doch
+std::vector<std::unique_ptr<Mesh>>
+dann hängen die meshes irgendwo in memory rum, muss ja jedes nur einmal geben in memory, muss die ja dann nur mehrfach malen,
+sollte aber nix ausmachen, is ja immerhin nur das original sprite aus dem ich dann pixel für pixel extrahiere und on screen male,
+via Graphics::Pipeline mit cam position etc.
 
 */
