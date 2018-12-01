@@ -18,13 +18,6 @@ Enemy::~Enemy()
 
 void Enemy::Update(End& end, float dt)
 {
-	time_passed += dt;
-	if (time_passed > 1.0f)
-	{
-		std::cout << "Enemy " << name << " has " << hp << " left." << std::endl;
-		time_passed = 0.0f;
-	}
-
 	if (hp <= 0)
 	{
 		destroy = true;

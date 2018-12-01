@@ -10,7 +10,6 @@ World::World(WorldCtorList)
 	{
 		meshes.emplace_back(std::make_unique<Mesh>(i, 1)); //replace with Sprite and ifstream and all that jazz
 	}
-	auto da = meshes[4].get();
 	start = std::make_unique<Start>(startcor, startsize, startname, meshes[20].get());
 	end = std::make_unique<End>(endcor, endsize, endname, meshes[21].get());
 	std::cout << "Made a World" << std::endl;
@@ -88,6 +87,7 @@ void World::SpawnTower(Vec2<float> cor, Vec2<float> size, std::string name, eTow
 	}
 	//towers.emplace_back(std::make_unique<Tower>(TowerInit));
 	//towers.emplace_back(std::make_unique<PoisonTower>(TowerInit));
+	towercount++;
 }
 
 void World::SpawnEnemy(Vec2<float> cor, Vec2<float> size, std::string name, eEnemies eenemy)
@@ -111,14 +111,13 @@ void World::SpawnEnemy(Vec2<float> cor, Vec2<float> size, std::string name, eEne
 		break;
 	}
 	//enemies.emplace_back(std::make_unique<Enemy>(EnemyInit));
+	enemycount++;
 }
 
 int World::Step()
 {
 	const float dt = ft.Mark();
 	//std::cout << dt << std::endl;
-	int towercount = towers.end() - towers.begin();
-	int enemycount = enemies.end() - enemies.begin();
 
 	for (int i = 0; i < towercount; i++)
 	{
@@ -164,38 +163,33 @@ int World::Step()
 		enemies[i]->Update(*end, dt);
 	}
 	
-	return enemycount;
-
-
-
-	/*for (int i = 0; i < towercount; i++)
+	time_passed += dt;
+	if (time_passed > 1.0f)
 	{
-		for (int j = 0; j < enemycount; j++)
-		{
-			towers[i]->Update(*enemies[j]);
-		}
+		Update();
+		time_passed = 0.0f;
 	}
+	
+	return enemycount;
+}
+
+void World::Update()
+{
+	//WHATEVER THE FUCK YOU WANT TO DISPLAY, PUT IN HERE
 
 	for (int i = 0; i < enemycount; i++)
 	{
-		enemies[i]->Update();
+		//enemy at cor is in range of tower
+		std::cout << "Enemy " << enemies[i]->name << " at " << enemies[i]->cor.GetX() << "/" << enemies[i]->cor.GetY() << 
+			" has " << enemies[i]->GetHp() << " hp left." << std::endl;
 	}
 
-	for (int i = 0; i < enemycount;)
-	{
-		if (!enemies.empty())
-		{
-			if (enemies[i]->GetDestroy())
-			{
-				enemies.erase(enemies.begin() + i);
-				enemycount--;
-			}
-			else
-			{
-				i++;
-			}
-		}
-	}*/
+	//std::cout << "Enemy " << name << " has " << hp << " left." << std::endl;
+	//print out all the damn stats
+	//Tower cor //could also do this differently
+	//Tower.enemiesinrange();
+	//Enemy cor
+	//Enemy hp
 }
 
 Vec2<float> World::GetStart()

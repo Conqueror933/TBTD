@@ -17,10 +17,14 @@ public:
 	void SpawnTower(Vec2<float> cor, Vec2<float> size, std::string name, eTowers etower);
 	void SpawnEnemy(Vec2<float> cor, Vec2<float> size, std::string name, eEnemies eenemy);
 	int Step();
+	void Update();
 	Vec2<float> GetStart();
 
 private:
+	float time_passed = 0.0f;
 	int lifes;
+	int towercount = 0;
+	int enemycount = 0;
 	FrameTimer ft;
 	Vec2<float> size;
 	std::vector<std::unique_ptr<Mesh>> meshes;

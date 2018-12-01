@@ -29,6 +29,14 @@ public: //Access
 		x = in_x;
 		y = in_y;
 	}
+	T GetX()
+	{
+		return x;
+	}
+	T GetY()
+	{
+		return y;
+	}
 
 public: //Math
 	Vec2<T> operator+(const Vec2<T>& rhs)

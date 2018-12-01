@@ -19,7 +19,7 @@ void Game::Go()
 	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Riese", eEnemies::Riese);
 
 	while (world.Step() != 0);
-	world.~World();
+	world.~World();	//remove this line to get rid of the weird iterator past end bug, that happens when dtor of Game is called
 	std::cin.get();
 }
 

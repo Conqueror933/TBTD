@@ -29,7 +29,6 @@ private:
 	int armor;
 	int killvalue;
 	bool destroy = false;
-	float time_passed = 0.0f;
 };
 
 // PARAMS: hp, speed, armor, killvalue

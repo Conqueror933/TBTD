@@ -10,7 +10,26 @@ int main()
 
 
 /*
-	TOWER
+			STUFF TO IMPLEMENT
+- Graphics (last on the list) { .NET , Matrices , Transformations , Sprite drawing , ... } maybe even DirectX
+- Unit Pathing (path blocking with size and all that jazz) (also right now, there is no restriction to go outside of the world)
+- Unit Text Display where they are / cout for tower gets in range, smth smth
+- Implement $ system
+- Make Towers Player placed
+- have wave and building phases
+- have rocks and walls and shit
+- randomize start and end, rocks walls and shit		(actually a design decision, dont wanna handcraft invisible maps tho...)
+- ASCII art like print the playfield?
+
+*/
+
+/*
+		TOWER
+
+PARAMS:		targets, atks, dmg, atkspeed, minrange, maxrange, price, smart_targeting, apply debuff, ...
+
+		DEBUFF
+PARAMS:		dmg/tick, tickrate, duration, poison stacks, -armor on hit, take more dmg %, spawn lightning on all surrounding enemies, ...
 
 tower with stats and just shoot random stuff
 PRO: tower is just a bunch of stats, logic is outside
