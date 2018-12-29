@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <algorithm>
 #include <iostream>
 
 template<typename T>
@@ -63,47 +64,88 @@ public: //Comparison
 	}
 
 public: //Utility
-	float Distance(const Vec2<T> target)	//this is shit and wrong
+	float Distance(const Vec2<T> v1, const Vec2<T> v2)
 	{
-		if (x < target.x)
+		return std::sqrt((v1.x - v2.x)*(v1.x - v2.x) + (v1.y - v2.y)*(v1.y - v2.y));
+	}
+
+	//Vec2<T> Move(const Vec2<T> start, const Vec2<T> end, float speed)
+	//{
+	//	float length = Distance(start, end);  //std::sqrt(x_dist * x_dist + y_dist * y_dist);
+
+	//	float x_dist;
+	//	float y_dist;
+	//	start.x < end.x ? x_dist = end.x - start.x : x_dist = start.x - end.x;
+	//	start.y < end.y ? y_dist = end.y - start.y : y_dist = start.y - end.y;
+	//	float a = x_dist + y_dist;	//% based distribution weighted on the length
+	//	x_dist <= 0.0f ? 0.0f : x_dist = x_dist / length;
+	//	y_dist <= 0.0f ? 0.0f : y_dist = y_dist / length;
+
+	//	if (x_dist == 0.0f && y_dist == 0.0f) throw "logic error, (x && y) == 0";
+
+	//	x_dist *= speed;
+	//	y_dist *= speed;
+	//	//std::cout << "moved to " << start.x + x_dist << "/" << start.y + y_dist << std::endl;
+	//	return Vec2<T>{start.x + x_dist, start.y + y_dist};
+	//}
+	Vec2<T> Move(const Vec2<T> start, const Vec2<T> end, float speed)	//non dynamic movement on rails
+	{//call this RasterMove when switching in the far far future
+		//figure out if north south west or east
+		//assumes x,y coordinatesystem starting bottomleft
+		if (start.x < end.x)
 		{
-			if (y < target.y)
-			{
-				return (target.x - x) + (target.y - y);
-			}
-			return (target.x - x) + (y - target.y);
+			//east
+			return Vec2<T>{std::min(start.x + speed,end.x), start.y};
+		}
+		else if (start.x > end.x)
+		{
+			//west
+			return Vec2<T>{std::max(start.x - speed,end.x), start.y};
+		}
+		else if (start.y < end.y)
+		{
+			//north
+			return Vec2<T>{start.x, std::min(start.y + speed, end.y)};
+		}
+		else if (start.y > end.y)
+		{
+			//south
+			return Vec2<T>{start.x, std::max(start.y - speed, end.y)};
 		}
 		else
 		{
-			if (y < target.y)
-			{
-				return (x - target.x) + (target.y - y);
-			}
-			return (x - target.x) + (y - target.y);
+			//error or target reached
+			return Vec2<T>{-1.0f, -1.0f};
 		}
-		
 	}
-	Vec2<T> Move(const Vec2<T> start, const Vec2<T> end, float speed)	//this is shit and wrong
-	{
-		float x_dist = end.x - start.x;
-		float y_dist = end.y - start.y;
-		float length = std::sqrt(x_dist * x_dist + y_dist * y_dist);
-		x_dist /= length;
-		y_dist /= length;
-		x_dist *= speed;
-		y_dist *= speed;
-		//std::cout << "moved to " << start.x + x_dist << "/" << start.y + y_dist << std::endl;
-		return Vec2<T>{start.x + x_dist, start.y + y_dist};
-	}
+
 	bool isClose(const Vec2<T> rhs, float dis)
 	{
-		return Distance(rhs) <= dis ? true : false;
+		return Distance({x,y}, rhs) <= dis ? true : false;	// {x,y} cheese much
 	}
-	//std::ostream& operator<<(std::ostream& o, const Vec2<T>& t)
-	//{
-	//	return o << t.x << ":" << t.y;
-	//}
 public:
 	T x;
 	T y;
 };
+
+
+
+
+/*
+if (start.x < end.x)
+{
+if (start.y < end.y)
+{
+return (end.x -start.x) + (end.y -start.y);
+}
+return (end.x -start.x) + (start.y - end.y);
+}
+else
+{
+if (start.y < end.y)
+{
+return (start.x - end.x) + (end.y -start.y);
+}
+return (start.x - end.x) + (start.y - end.y);
+}
+*/

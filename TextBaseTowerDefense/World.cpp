@@ -137,7 +137,7 @@ int World::Step()
 			for (int j = 0; j < enemycount; j++)
 			{
 				//std::cout << towers[i]->name << std::endl;
-				float dist = towers[i]->cor.Distance(enemies[j]->cor);
+				float dist = towers[i]->cor.Distance(towers[i]->cor, enemies[j]->cor);
 				if (r >= dist)
 				{
 					events.emplace_back(Event{ *enemies[j], *towers[i], dist }); //event for max_targets
@@ -191,7 +191,7 @@ void World::Update()
 	for (int i = 0; i < enemycount; i++)
 	{
 		//enemy at cor is in range of tower
-		std::cout << "Enemy " << enemies[i]->name << " at " << (int)enemies[i]->cor.x << "/" << (int)enemies[i]->cor.y << 
+		std::cout << "Enemy " << enemies[i]->name << " at " << /*(int)*/enemies[i]->cor.x << "/" << /*(int)*/enemies[i]->cor.y << 
 			" has " << enemies[i]->GetHp() << " hp left." << std::endl;
 	}
 
