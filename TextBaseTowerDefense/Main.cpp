@@ -10,8 +10,8 @@ int main()
 	return 0;
 }
 
+//STUFF TO IMPLEMENT
 /*
-			STUFF TO IMPLEMENT
 - Unit Text Display where they are / cout for tower gets in range, smth smth
 
 - Implement $ system
@@ -20,11 +20,19 @@ int main()
 - have rocks and walls and shit
 
 - ASCII art like print the playfield?
-
 */
 
+//MAKE THE GAME LOOP
 /*
-		RASTERIZATION
+- build phase
+	- player controlled system
+	- time based aswell? or player has to press start? both options?
+- wave phase
+	- current world.Step system
+*/
+
+//RASTERIZATION
+/*
 - at world gen, set raster size
 	- worldsize.x, worldsize.y, gridsize.x, gridsize.y?, squaresize.x, squaresize.y?
 		- preset everything at world gen
@@ -37,9 +45,8 @@ int main()
 		everything is just a dot basically, fit into a huge grid
 */
 
+//TOWER
 /*
-		TOWER
-
 PARAMS:		targets, atks, dmg, atkspeed, minrange, maxrange, price, smart_targeting, apply debuff, ...
 
 		DEBUFF
@@ -90,9 +97,8 @@ ShockTowerLvl3 (1 targets, 20 atks, 0.2 dmg, 0.2 atkspeed, range 12)
 
 */
 
+//ENEMIES
 /*
-	ENEMIES
-
 Goblin			(1000hp, 5.0 speed,  0 armor, 10 killvalue)
 Riese			(2500hp, 2.0 speed, 20 armor, 25 killvalue)
 ArmoredGoblin	(1000hp, 4.5 speed, 50 armor, 15 killvalue)
@@ -101,6 +107,7 @@ ArmoredImp		( 200hp, 6.5 speed, 20 armor, 4 killvalue)
 
 */
 
+//MESH/GRAPHIC STUFF
 /*
 ich hab das mesh, ich brauch n vector von allen meshes, dann bekommt jeder tower nen pointer zu dem mesh von dessen typ er ist
 speicher ich diesen mesh pointer in Object, Tower oder DerivedTower ? man würde doch meinen in Object, weil das dahin gehört richtig?
