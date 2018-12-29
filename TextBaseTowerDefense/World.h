@@ -13,8 +13,8 @@ class World
 public:
 	World(WorldCtorList);
 	~World();
-	void SpawnTower(Vec2<float> cor, std::string name, eTowers etower);
-	void SpawnEnemy(std::string name, eEnemies eenemy);
+	void SpawnTower(Vec2<float> cor, eTowers etower, std::string name = "");
+	void SpawnEnemy(eEnemies eenemy, std::string name = "");
 	int Step();
 	void Update();
 	Vec2<float> GetStart();

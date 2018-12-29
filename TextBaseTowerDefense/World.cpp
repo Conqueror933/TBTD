@@ -21,7 +21,7 @@ World::~World()
 	std::cout << "Killed a World" << std::endl;
 }
 
-void World::SpawnTower(Vec2<float> cor, std::string name, eTowers etower)
+void World::SpawnTower(Vec2<float> cor, eTowers etower, std::string name = "")
 {
 	switch (etower)
 	{
@@ -91,23 +91,28 @@ void World::SpawnTower(Vec2<float> cor, std::string name, eTowers etower)
 	towercount++;
 }
 
-void World::SpawnEnemy(std::string name, eEnemies eenemy)
+void World::SpawnEnemy(eEnemies eenemy, std::string name = "")
 {
 	switch (eenemy)
 	{
 	case eEnemies::Goblin:
+		if (name == "") name = "Goblin";
 		enemies.emplace_back(std::make_unique<Enemy>(meshes[30].get(), name, Waypoints[0], M_Goblin));
 		break;
 	case eEnemies::Riese:
+		if (name == "") name = "Riese";
 		enemies.emplace_back(std::make_unique<Enemy>(meshes[31].get(), name, Waypoints[0], M_Riese));
 		break;
 	case eEnemies::ArmoredGoblin:
+		if (name == "") name = "ArmoredGoblin";
 		enemies.emplace_back(std::make_unique<Enemy>(meshes[32].get(), name, Waypoints[0], M_ArmoredGoblin));
 		break;
 	case eEnemies::Imp:
+		if (name == "") name = "Imp";
 		enemies.emplace_back(std::make_unique<Enemy>(meshes[33].get(), name, Waypoints[0], M_Imp));
 		break;
 	case eEnemies::ArmoredImp:
+		if (name == "") name = "ArmoredImp";
 		enemies.emplace_back(std::make_unique<Enemy>(meshes[34].get(), name, Waypoints[0], M_ArmoredImp));
 		break;
 	}
