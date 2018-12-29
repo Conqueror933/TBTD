@@ -207,3 +207,12 @@ const std::vector<Vec2<float>>& World::GetWaypoints()
 {
 	return Waypoints;
 }
+
+const void World::DisplayTowers()
+{
+	for (unsigned int i = 0; i < towers.size(); i++)
+	{
+		std::cout << "Tower " << towers[i]->name << " at " << /*(int)*/towers[i]->cor.x << "/" << /*(int)*/towers[i]->cor.y <<
+			/*" is " << towers[i]->GetType() <<*/ std::endl;
+	}
+}

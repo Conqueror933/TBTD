@@ -9,20 +9,21 @@ int main()
 	std::cin.get();
 	return 0;
 }
+//TO-DO list / BUG list
+/*
+change tower name bullshit to be like enemy
+*/
 
 //STUFF TO IMPLEMENT
 /*
 - Unit Text Display where they are / cout for tower gets in range, smth smth
 
 - Implement $ system
-- Make Towers Player placed
-- have wave and building phases
-- have rocks and walls and shit
 
 - ASCII art like print the playfield?
 */
 
-//MAKE THE GAME LOOP
+//GAME LOOP
 /*
 - build phase
 	- player controlled system

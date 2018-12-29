@@ -17,6 +17,7 @@ public:
 	int Step();
 	void Update();
 	const std::vector<Vec2<float>>& GetWaypoints();
+	const void DisplayTowers();
 
 private:
 	float time_passed = 0.0f;
