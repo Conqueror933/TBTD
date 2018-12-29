@@ -200,7 +200,7 @@ void World::Update()
 	//Enemy hp
 }
 
-std::vector<Vec2<float>> World::GetWaypoints()
+const std::vector<Vec2<float>>& World::GetWaypoints()
 {
 	return Waypoints;
 }

@@ -16,7 +16,7 @@ Enemy::~Enemy()
 	std::cout << "Enemy " << name << " destroyed." << std::endl;
 }
 
-void Enemy::Update(std::vector<Vec2<float>> Waypoints, float dt)
+void Enemy::Update(const std::vector<Vec2<float>>& Waypoints, float dt)
 {
 	if (hp <= 0)
 	{
@@ -26,7 +26,7 @@ void Enemy::Update(std::vector<Vec2<float>> Waypoints, float dt)
 	Walk(Waypoints, dt);
 }
 
-void Enemy::Walk(std::vector<Vec2<float>> Waypoints, float dt)
+void Enemy::Walk(const std::vector<Vec2<float>>& Waypoints, float dt)
 {
 	//move to Vec2(end)
 	//speed*dt

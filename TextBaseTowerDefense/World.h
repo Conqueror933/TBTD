@@ -7,7 +7,7 @@
 #include "FrameTimer.h"
 #include "Enums.h"
 
-#define WorldCtorList float width, float height, int lifes, std::vector<Vec2<float>> Waypoints
+#define WorldCtorList float width, float height, int lifes,const std::vector<Vec2<float>> Waypoints
 class World
 {
 public:
@@ -17,7 +17,7 @@ public:
 	void SpawnEnemy(eEnemies eenemy, std::string name = "");
 	int Step();
 	void Update();
-	std::vector<Vec2<float>> GetWaypoints();
+	const std::vector<Vec2<float>>& GetWaypoints();
 
 private:
 	float time_passed = 0.0f;
@@ -26,7 +26,7 @@ private:
 	int enemycount = 0;
 	FrameTimer ft;
 	Vec2<float> size;
-	std::vector<Vec2<float>> Waypoints;
+	const std::vector<Vec2<float>> Waypoints;
 	std::vector<std::unique_ptr<Mesh>> meshes;
 	std::vector<std::unique_ptr<Tower>> towers;
 	std::vector<std::unique_ptr<Enemy>> enemies;
