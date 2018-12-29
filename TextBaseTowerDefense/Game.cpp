@@ -14,6 +14,7 @@ void Game::Go()
 	world.SpawnEnemy(eEnemies::ArmoredGoblin, "ArmoredGoblin");
 	world.SpawnEnemy(eEnemies::Riese, "Riese");
 	
+	std::cout << "\n";
 	while (world.Step() != 0);
 }
 
