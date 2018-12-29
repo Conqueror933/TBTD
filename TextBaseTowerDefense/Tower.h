@@ -56,28 +56,28 @@ private:
 	
 };
 
-// PARAMS: max_targets, attackcount, damage, time_per_attack, range, price
+// PARAMS:Vec2<float>{size},  max_targets, attackcount, damage, time_per_attack, range, price
 
-#define M_BaseTowerLvl1			  1,  1,  50, 0.5f, 20, 100
-#define M_BaseTowerLvl2			  1,  1, 100, 0.5f, 25, 200
-#define M_BaseTowerLvl3			  1,  1, 150, 0.5f, 30, 300
-	
-#define M_AOETowerLvl1			100,  1,  20, 0.7f, 10, 150
-#define M_AOETowerLvl2			100,  1,  30, 0.6f, 10, 300
-#define M_AOETowerLvl3			100,  1,  40, 0.5f, 10, 450
-		
-#define M_MultishotTowerLvl1	  2,  1,  50, 0.5f, 10, 120
-#define M_MultishotTowerLvl2	  3,  1,  50, 0.5f, 15, 240
-#define M_MultishotTowerLvl3	  4,  1,  50, 0.5f, 15, 320
-		
-#define M_SniperTowerLvl1		  1,  1, 300, 1.5f, 30, 170
-#define M_SniperTowerLvl2		  1,  1, 450, 1.5f, 40, 240
-#define M_SniperTowerLvl3		  1,  1, 450, 1.0f, 50, 400
-		
-#define M_BurnTowerLvl1			100,  1,   1, 0.1f,  5, 200
-#define M_BurnTowerLvl2			100,  1,   2, 0.1f,  5, 300
-#define M_BurnTowerLvl3			100,  1,   3, 0.1f,  5, 400
-								   
-#define M_ShockTowerLvl1		  1, 10,   2, 0.2f, 12, 150
-#define M_ShockTowerLvl2		  1, 15,   2, 0.2f, 12, 250
-#define M_ShockTowerLvl3		  1, 20,   2, 0.2f, 12, 350
+#define M_BaseTowerLvl1			Vec2<float>{ 5.0f,5.0f },   1,  1,  50, 0.5f, 20, 100
+#define M_BaseTowerLvl2			Vec2<float>{ 5.0f,5.0f },   1,  1, 100, 0.5f, 25, 200
+#define M_BaseTowerLvl3			Vec2<float>{ 5.0f,5.0f },   1,  1, 150, 0.5f, 30, 300
+
+#define M_AOETowerLvl1			Vec2<float>{ 5.0f,5.0f }, 100,  1,  20, 0.7f, 10, 150
+#define M_AOETowerLvl2			Vec2<float>{ 5.0f,5.0f }, 100,  1,  30, 0.6f, 10, 300
+#define M_AOETowerLvl3			Vec2<float>{ 5.0f,5.0f }, 100,  1,  40, 0.5f, 10, 450
+
+#define M_MultishotTowerLvl1	Vec2<float>{ 5.0f,5.0f },   2,  1,  50, 0.5f, 10, 120
+#define M_MultishotTowerLvl2	Vec2<float>{ 5.0f,5.0f },   3,  1,  50, 0.5f, 15, 240
+#define M_MultishotTowerLvl3	Vec2<float>{ 5.0f,5.0f },   4,  1,  50, 0.5f, 15, 320
+
+#define M_SniperTowerLvl1		Vec2<float>{ 5.0f,5.0f },   1,  1, 300, 1.5f, 30, 170
+#define M_SniperTowerLvl2		Vec2<float>{ 5.0f,5.0f },   1,  1, 450, 1.5f, 40, 240
+#define M_SniperTowerLvl3		Vec2<float>{ 5.0f,5.0f },   1,  1, 450, 1.0f, 50, 400
+
+#define M_BurnTowerLvl1			Vec2<float>{ 5.0f,5.0f }, 100,  1,   1, 0.1f,  5, 200
+#define M_BurnTowerLvl2			Vec2<float>{ 5.0f,5.0f }, 100,  1,   2, 0.1f,  5, 300
+#define M_BurnTowerLvl3			Vec2<float>{ 5.0f,5.0f }, 100,  1,   3, 0.1f,  5, 400
+
+#define M_ShockTowerLvl1		Vec2<float>{ 5.0f,5.0f },   1, 10,   2, 0.2f, 12, 150
+#define M_ShockTowerLvl2		Vec2<float>{ 5.0f,5.0f },   1, 15,   2, 0.2f, 12, 250
+#define M_ShockTowerLvl3		Vec2<float>{ 5.0f,5.0f },   1, 20,   2, 0.2f, 12, 350

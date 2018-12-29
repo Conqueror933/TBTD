@@ -19,8 +19,9 @@ private:
 	//Mesh m;
 	//Mesh * mesh = nullptr;
 	//mesh = &m;
-	World world{ 50.0f, 50.0f, 50, 
-		Vec2<float>{ 0.0f, 0.0f }, Vec2<float>{ 1.0f, 1.0f }, "Start",
-		Vec2<float>{ 60.0f, 40.0f }, Vec2<float>{ 1.0f, 1.0f }, "End"};
+	std::vector<Vec2<float>> Waypoints;
+	World world{ 200.0f, 200.0f, 50, Waypoints };
+		//Vec2<float>{ 0.0f, 0.0f }, Vec2<float>{ 1.0f, 1.0f }, "Start",
+		//Vec2<float>{ 60.0f, 40.0f }, Vec2<float>{ 1.0f, 1.0f }, "End"};
 
 };

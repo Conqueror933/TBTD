@@ -2,18 +2,18 @@
 
 void Game::Go()
 {
-	world.SpawnTower({ 20.0f, 20.0f }, { 5.0f,5.0f }, "AOE", eTowers::AOETowerLvl1);
-	world.SpawnTower({ 21.0f, 20.0f }, { 5.0f,5.0f }, "Sniper", eTowers::SniperTowerLvl1);
-	world.SpawnTower({ 22.0f, 20.0f }, { 5.0f,5.0f }, "Shock", eTowers::ShockTowerLvl1);
+	world.SpawnTower({ 20.0f, 20.0f }, "AOE", eTowers::AOETowerLvl1);
+	world.SpawnTower({ 21.0f, 20.0f }, "Sniper", eTowers::SniperTowerLvl1);
+	world.SpawnTower({ 22.0f, 20.0f }, "Shock", eTowers::ShockTowerLvl1);
 
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Goblin", eEnemies::Goblin);
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Imp1", eEnemies::Imp);
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Imp2", eEnemies::Imp);
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Imp3", eEnemies::Imp);
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Imp4", eEnemies::Imp);
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "ArmoredGoblin", eEnemies::ArmoredGoblin);
-	world.SpawnEnemy(world.GetStart(), { 5.0f,5.0f }, "Riese", eEnemies::Riese);
-
+	world.SpawnEnemy("Goblin", eEnemies::Goblin);
+	world.SpawnEnemy("Imp1", eEnemies::Imp);
+	world.SpawnEnemy("Imp2", eEnemies::Imp);
+	world.SpawnEnemy("Imp3", eEnemies::Imp);
+	world.SpawnEnemy("Imp4", eEnemies::Imp);
+	world.SpawnEnemy("ArmoredGoblin", eEnemies::ArmoredGoblin);
+	world.SpawnEnemy("Riese", eEnemies::Riese);
+	
 	while (world.Step() != 0);
 	world.~World();	//remove this line to get rid of the weird iterator past end bug, that happens when dtor of Game is called
 	std::cin.get();

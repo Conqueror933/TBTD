@@ -3,15 +3,16 @@
 World::World(WorldCtorList)
 	:
 	size(width, height),
-	lifes(lifes)
+	lifes(lifes),
+	Waypoints(Waypoints)
 {
 
 	for (int i = 0; i < 35; i++)
 	{
 		meshes.emplace_back(std::make_unique<Mesh>(i, 1)); //replace with Sprite and ifstream and all that jazz
 	}
-	start = std::make_unique<Start>(startcor, startsize, startname, meshes[20].get());
-	end = std::make_unique<End>(endcor, endsize, endname, meshes[21].get());
+	//start = std::make_unique<Start>(startcor, startsize, startname, meshes[20].get());
+	//end = std::make_unique<End>(endcor, endsize, endname, meshes[21].get());
 	std::cout << "Made a World" << std::endl;
 }
 
@@ -20,68 +21,68 @@ World::~World()
 	std::cout << "Killed a World" << std::endl;
 }
 
-void World::SpawnTower(Vec2<float> cor, Vec2<float> size, std::string name, eTowers etower)
+void World::SpawnTower(Vec2<float> cor, std::string name, eTowers etower)
 {
 	switch (etower)
 	{
 	case eTowers::BaseTowerLvl1:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[0].get(), M_BaseTowerLvl1));
+		towers.emplace_back(std::make_unique<Tower>(meshes[0].get(), name, cor, M_BaseTowerLvl1));
 		break;
 	case eTowers::BaseTowerLvl2:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[1].get(), M_BaseTowerLvl2));
+		towers.emplace_back(std::make_unique<Tower>(meshes[1].get(), name, cor, M_BaseTowerLvl2));
 		break;
 	case eTowers::BaseTowerLvl3:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[2].get(), M_BaseTowerLvl3));
+		towers.emplace_back(std::make_unique<Tower>(meshes[2].get(), name, cor, M_BaseTowerLvl3));
 		break;
 
 	case eTowers::AOETowerLvl1:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[3].get(), M_AOETowerLvl1));
+		towers.emplace_back(std::make_unique<Tower>(meshes[3].get(), name, cor, M_AOETowerLvl1));
 		break;
 	case eTowers::AOETowerLvl2:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[4].get(), M_AOETowerLvl2));
+		towers.emplace_back(std::make_unique<Tower>(meshes[4].get(), name, cor, M_AOETowerLvl2));
 		break;
 	case eTowers::AOETowerLvl3:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[5].get(), M_AOETowerLvl3));
+		towers.emplace_back(std::make_unique<Tower>(meshes[5].get(), name, cor, M_AOETowerLvl3));
 		break;
 
 	case eTowers::MultishotTowerLvl1:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[6].get(), M_MultishotTowerLvl1));
+		towers.emplace_back(std::make_unique<Tower>(meshes[6].get(), name, cor, M_MultishotTowerLvl1));
 		break;
 	case eTowers::MultishotTowerLvl2:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[7].get(), M_MultishotTowerLvl2));
+		towers.emplace_back(std::make_unique<Tower>(meshes[7].get(), name, cor, M_MultishotTowerLvl2));
 		break;
 	case eTowers::MultishotTowerLvl3:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[8].get(), M_MultishotTowerLvl3));
+		towers.emplace_back(std::make_unique<Tower>(meshes[8].get(), name, cor, M_MultishotTowerLvl3));
 		break;
 
 	case eTowers::SniperTowerLvl1:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[9].get(), M_SniperTowerLvl1));
+		towers.emplace_back(std::make_unique<Tower>(meshes[9].get(), name, cor, M_SniperTowerLvl1));
 		break;
 	case eTowers::SniperTowerLvl2:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[10].get(), M_SniperTowerLvl2));
+		towers.emplace_back(std::make_unique<Tower>(meshes[10].get(), name, cor, M_SniperTowerLvl2));
 		break;
 	case eTowers::SniperTowerLvl3:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[11].get(), M_SniperTowerLvl3));
+		towers.emplace_back(std::make_unique<Tower>(meshes[11].get(), name, cor, M_SniperTowerLvl3));
 		break;
 
 	case eTowers::BurnTowerLvl1:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[12].get(), M_BurnTowerLvl1));
+		towers.emplace_back(std::make_unique<Tower>(meshes[12].get(), name, cor, M_BurnTowerLvl1));
 		break;
 	case eTowers::BurnTowerLvl2:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[13].get(), M_BurnTowerLvl2));
+		towers.emplace_back(std::make_unique<Tower>(meshes[13].get(), name, cor, M_BurnTowerLvl2));
 		break;
 	case eTowers::BurnTowerLvl3:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[14].get(), M_BurnTowerLvl3));
+		towers.emplace_back(std::make_unique<Tower>(meshes[14].get(), name, cor, M_BurnTowerLvl3));
 		break;
 
 	case eTowers::ShockTowerLvl1:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[15].get(), M_ShockTowerLvl1));
+		towers.emplace_back(std::make_unique<Tower>(meshes[15].get(), name, cor, M_ShockTowerLvl1));
 		break;
 	case eTowers::ShockTowerLvl2:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[16].get(), M_ShockTowerLvl2));
+		towers.emplace_back(std::make_unique<Tower>(meshes[16].get(), name, cor, M_ShockTowerLvl2));
 		break;
 	case eTowers::ShockTowerLvl3:
-		towers.emplace_back(std::make_unique<Tower>(cor, size, name, meshes[17].get(), M_ShockTowerLvl3));
+		towers.emplace_back(std::make_unique<Tower>(meshes[17].get(), name, cor, M_ShockTowerLvl3));
 		break;
 
 	}
@@ -90,24 +91,24 @@ void World::SpawnTower(Vec2<float> cor, Vec2<float> size, std::string name, eTow
 	towercount++;
 }
 
-void World::SpawnEnemy(Vec2<float> cor, Vec2<float> size, std::string name, eEnemies eenemy)
+void World::SpawnEnemy(std::string name, eEnemies eenemy)
 {
 	switch (eenemy)
 	{
 	case eEnemies::Goblin:
-		enemies.emplace_back(std::make_unique<Enemy>(cor, size, name, meshes[30].get(), M_Goblin));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[30].get(), name, Waypoints[0], M_Goblin));
 		break;
 	case eEnemies::Riese:
-		enemies.emplace_back(std::make_unique<Enemy>(cor, size, name, meshes[31].get(), M_Riese));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[31].get(), name, Waypoints[0], M_Riese));
 		break;
 	case eEnemies::ArmoredGoblin:
-		enemies.emplace_back(std::make_unique<Enemy>(cor, size, name, meshes[32].get(), M_ArmoredGoblin));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[32].get(), name, Waypoints[0], M_ArmoredGoblin));
 		break;
 	case eEnemies::Imp:
-		enemies.emplace_back(std::make_unique<Enemy>(cor, size, name, meshes[33].get(), M_Imp));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[33].get(), name, Waypoints[0], M_Imp));
 		break;
 	case eEnemies::ArmoredImp:
-		enemies.emplace_back(std::make_unique<Enemy>(cor, size, name, meshes[34].get(), M_ArmoredImp));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[34].get(), name, Waypoints[0], M_ArmoredImp));
 		break;
 	}
 	//enemies.emplace_back(std::make_unique<Enemy>(EnemyInit));

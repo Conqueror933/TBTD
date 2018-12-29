@@ -7,7 +7,6 @@ int main()
 	g.Go();
 	return 0;
 }
-//just gonna do easy mode
 
 /*
 			STUFF TO IMPLEMENT
