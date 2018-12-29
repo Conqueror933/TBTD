@@ -11,8 +11,6 @@ World::World(WorldCtorList)
 	{
 		meshes.emplace_back(std::make_unique<Mesh>(i, 1)); //replace with Sprite and ifstream and all that jazz
 	}
-	start = std::make_unique<Start>(meshes[20].get(), "Start", GetStart());
-	end = std::make_unique<End>(meshes[21].get(), "End", GetEnd());
 	std::cout << "Made a World" << std::endl;
 }
 
@@ -168,7 +166,7 @@ int World::Step()
 	//enemy updates
 	for (int i = 0; i < enemycount; i++)
 	{
-		enemies[i]->Update(*end, dt);
+		enemies[i]->Update(Waypoints, dt);
 	}
 	
 	//spit out frames
@@ -176,6 +174,7 @@ int World::Step()
 	if (time_passed > 1.0f)
 	{
 		Update();
+		std::cout << "\n";
 		time_passed = 0.0f;
 	}
 	
@@ -201,12 +200,7 @@ void World::Update()
 	//Enemy hp
 }
 
-Vec2<float> World::GetStart()
+std::vector<Vec2<float>> World::GetWaypoints()
 {
-	return Waypoints[0];
-}
-
-Vec2<float> World::GetEnd()
-{
-	return Waypoints[6]; //needs some Waypoints.back() action, just dont feel like fucking with iterators right now
+	return Waypoints;
 }

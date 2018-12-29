@@ -16,22 +16,22 @@ Enemy::~Enemy()
 	std::cout << "Enemy " << name << " destroyed." << std::endl;
 }
 
-void Enemy::Update(End& end, float dt)
+void Enemy::Update(std::vector<Vec2<float>> Waypoints, float dt)
 {
 	if (hp <= 0)
 	{
 		destroy = true;
 		std::cout << name << " died." << std::endl;
 	}
-	Walk(end, dt);
+	Walk(Waypoints, dt);
 }
 
-void Enemy::Walk(End& end, float dt)
+void Enemy::Walk(std::vector<Vec2<float>> Waypoints, float dt)
 {
 	//move to Vec2(end)
 	//speed*dt
 	//calculate new cor
-	cor = cor.Move(this->cor, end.cor, speed*dt);
+	cor = cor.Move(this->cor, Waypoints[6], speed*dt);
 	//std::cout << "Enemy " << speed * dt;// << std::endl;
 }
 

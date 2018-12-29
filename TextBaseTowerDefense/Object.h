@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <vector>
 #include "Vec2.h"
 #include "Mesh.h"
 
@@ -25,34 +26,4 @@ public:
 	Vec2<float> size;
 	std::string name;
 	Mesh* mesh;
-};
-
-class Start : public Object
-{
-public:
-	Start(Objectctorlist = {0.0f,0.0f})
-		:
-		Object(ObjectInit)
-	{
-	}
-
-	void Update()
-	{
-		//spawn mobs at start
-	}
-};
-
-class End : public Object
-{
-public:
-	End(Objectctorlist = { 0.0f,0.0f })
-		:
-		Object(ObjectInit)
-	{
-	}
-
-	void Update()
-	{
-		//mob gets to end, dies, lifes -1
-	}
 };

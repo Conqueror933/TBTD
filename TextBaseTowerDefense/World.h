@@ -17,8 +17,7 @@ public:
 	void SpawnEnemy(eEnemies eenemy, std::string name = "");
 	int Step();
 	void Update();
-	Vec2<float> GetStart();
-	Vec2<float> GetEnd();
+	std::vector<Vec2<float>> GetWaypoints();
 
 private:
 	float time_passed = 0.0f;
@@ -31,6 +30,4 @@ private:
 	std::vector<std::unique_ptr<Mesh>> meshes;
 	std::vector<std::unique_ptr<Tower>> towers;
 	std::vector<std::unique_ptr<Enemy>> enemies;
-	std::unique_ptr<Start> start;
-	std::unique_ptr<End> end;
 };

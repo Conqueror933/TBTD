@@ -11,8 +11,8 @@ public:
 	~Enemy();
 
 public:
-	void Update(End& end, float dt);
-	void Walk(End& end, float dt);
+	void Update(std::vector<Vec2<float>> Waypoints , float dt);
+	void Walk(std::vector<Vec2<float>> Waypoints , float dt);
 
 public:
 	bool GetDestroy();
