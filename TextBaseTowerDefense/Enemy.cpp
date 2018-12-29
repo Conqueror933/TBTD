@@ -31,7 +31,7 @@ void Enemy::Walk(const std::vector<Vec2<float>>& Waypoints, float dt)
 	//move to Vec2(end)
 	//speed*dt
 	//calculate new cor
-	cor = cor.Move(this->cor, Waypoints[6], speed*dt);
+	cor = cor.Move(this->cor, Waypoints.back(), speed*dt);
 	//std::cout << "Enemy " << speed * dt;// << std::endl;
 }
 
