@@ -15,6 +15,5 @@ void Game::Go()
 	world.SpawnEnemy(eEnemies::Riese, "Riese");
 	
 	while (world.Step() != 0);
-	//world.~World();	//remove this line to get rid of the weird iterator past end bug, that happens when dtor of Game is called
 }
 

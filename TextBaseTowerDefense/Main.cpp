@@ -3,7 +3,6 @@
 int main()
 {
 	{
-		//std::make_unique<Game>()->Go();
 		Game g;
 		g.Go();
 	}
