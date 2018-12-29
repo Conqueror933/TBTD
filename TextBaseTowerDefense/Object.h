@@ -30,7 +30,7 @@ public:
 class Start : public Object
 {
 public:
-	Start(Objectctorlist)
+	Start(Objectctorlist = {0.0f,0.0f})
 		:
 		Object(ObjectInit)
 	{
@@ -45,7 +45,7 @@ public:
 class End : public Object
 {
 public:
-	End(Objectctorlist)
+	End(Objectctorlist = { 0.0f,0.0f })
 		:
 		Object(ObjectInit)
 	{

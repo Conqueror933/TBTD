@@ -11,8 +11,8 @@ World::World(WorldCtorList)
 	{
 		meshes.emplace_back(std::make_unique<Mesh>(i, 1)); //replace with Sprite and ifstream and all that jazz
 	}
-	//start = std::make_unique<Start>(startcor, startsize, startname, meshes[20].get());
-	//end = std::make_unique<End>(endcor, endsize, endname, meshes[21].get());
+	start = std::make_unique<Start>(meshes[20].get(), "Start", GetStart());
+	end = std::make_unique<End>(meshes[21].get(), "End", GetEnd());
 	std::cout << "Made a World" << std::endl;
 }
 
@@ -21,7 +21,7 @@ World::~World()
 	std::cout << "Killed a World" << std::endl;
 }
 
-void World::SpawnTower(Vec2<float> cor, eTowers etower, std::string name = "")
+void World::SpawnTower(Vec2<float> cor, eTowers etower, std::string name)
 {
 	switch (etower)
 	{
@@ -91,7 +91,7 @@ void World::SpawnTower(Vec2<float> cor, eTowers etower, std::string name = "")
 	towercount++;
 }
 
-void World::SpawnEnemy(eEnemies eenemy, std::string name = "")
+void World::SpawnEnemy(eEnemies eenemy, std::string name)
 {
 	switch (eenemy)
 	{
@@ -200,5 +200,10 @@ void World::Update()
 
 Vec2<float> World::GetStart()
 {
-	return start->cor;
+	return Waypoints[0];
+}
+
+Vec2<float> World::GetEnd()
+{
+	return Waypoints[6]; //needs some Waypoints.back() action, just dont feel like fucking with iterators right now
 }

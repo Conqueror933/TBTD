@@ -2,9 +2,12 @@
 
 int main()
 {
-	//std::make_unique<Game>()->Go();
-	Game g;
-	g.Go();
+	{
+		//std::make_unique<Game>()->Go();
+		Game g;
+		g.Go();
+	}
+	std::cin.get();
 	return 0;
 }
 

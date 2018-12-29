@@ -18,6 +18,7 @@ public:
 	int Step();
 	void Update();
 	Vec2<float> GetStart();
+	Vec2<float> GetEnd();
 
 private:
 	float time_passed = 0.0f;
