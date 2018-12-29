@@ -56,6 +56,12 @@ public: //Math
 		return Vec2<T>{this.x / rhs.x, this.y / rhs.y};
 	}
 
+public: //Comparison
+	bool operator==(const Vec2<T> rhs)
+	{
+		return x == rhs.x && y == rhs.y;
+	}
+
 public: //Utility
 	float Distance(const Vec2<T> target)
 	{
@@ -88,6 +94,10 @@ public: //Utility
 		y_dist *= speed;
 		//std::cout << "moved to " << start.x + x_dist << "/" << start.y + y_dist << std::endl;
 		return Vec2<T>{start.x + x_dist, start.y + y_dist};
+	}
+	bool isClose(const Vec2<T> rhs, float dis)
+	{
+		return Distance(rhs) <= dis ? true : false;
 	}
 	//std::ostream& operator<<(std::ostream& o, const Vec2<T>& t)
 	//{

@@ -1,8 +1,8 @@
 #pragma once
 #include "Object.h"
 
-#define EnemyCtorList  Objectctorlist, int hp, float speed, int armor, int killvalue
-#define EnemyInit ObjectInit, hp, speed, armor, killvalue
+#define EnemyCtorList  Objectctorlist, int hp, float speed, int armor, int killvalue, const std::vector<Vec2<float>>& Waypoints
+#define EnemyInit ObjectInit, hp, speed, armor, killvalue, Waypoints
 
 class Enemy : public Object
 {
@@ -11,8 +11,7 @@ public:
 	~Enemy();
 
 public:
-	void Update(const std::vector<Vec2<float>>& Waypoints , float dt);
-	void Walk(const std::vector<Vec2<float>>& Waypoints , float dt);
+	void Update(float dt);
 
 public:
 	bool GetDestroy();
@@ -21,9 +20,11 @@ public:
 	void TakeDamage(int dmg);
 
 private:
-	void Walk();
+	void Walk(float dt);
 
 private:
+	const std::vector<Vec2<float>>& Waypoints;
+	int nextWaypoint = 1;
 	int hp;
 	float speed;
 	int armor;

@@ -1,13 +1,13 @@
 #include "World.h"
 
-World::World(std::vector<Vec2<float>> Waypoints, float gridsize, float squaresize, int lifes)
+World::World(const std::vector<Vec2<float>> Waypoints, float gridsize, float squaresize, int lifes)
 	:
 	Waypoints(Waypoints),
 	gridsize(gridsize),
 	squaresize(squaresize),
 	lifes(lifes)
 {
-	for (int i = 0; i < Waypoints.size(); i++)
+	for (unsigned int i = 0u; i < Waypoints.size(); i++)
 	{
 		if (Waypoints[i].x > worldsize.x) worldsize.x = Waypoints[i].x ;
 		if (Waypoints[i].y > worldsize.y) worldsize.y = Waypoints[i].y ;
@@ -90,8 +90,6 @@ void World::SpawnTower(Vec2<float> cor, eTowers etower, std::string name)
 		break;
 
 	}
-	//towers.emplace_back(std::make_unique<Tower>(TowerInit));
-	//towers.emplace_back(std::make_unique<PoisonTower>(TowerInit));
 	towercount++;
 }
 
@@ -101,26 +99,25 @@ void World::SpawnEnemy(eEnemies eenemy, std::string name)
 	{
 	case eEnemies::Goblin:
 		if (name == "") name = "Goblin";
-		enemies.emplace_back(std::make_unique<Enemy>(meshes[30].get(), name, Waypoints[0], M_Goblin));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[30].get(), name, Waypoints[0], M_Goblin, Waypoints));
 		break;
 	case eEnemies::Riese:
 		if (name == "") name = "Riese";
-		enemies.emplace_back(std::make_unique<Enemy>(meshes[31].get(), name, Waypoints[0], M_Riese));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[31].get(), name, Waypoints[0], M_Riese, Waypoints));
 		break;
 	case eEnemies::ArmoredGoblin:
 		if (name == "") name = "ArmoredGoblin";
-		enemies.emplace_back(std::make_unique<Enemy>(meshes[32].get(), name, Waypoints[0], M_ArmoredGoblin));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[32].get(), name, Waypoints[0], M_ArmoredGoblin, Waypoints));
 		break;
 	case eEnemies::Imp:
 		if (name == "") name = "Imp";
-		enemies.emplace_back(std::make_unique<Enemy>(meshes[33].get(), name, Waypoints[0], M_Imp));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[33].get(), name, Waypoints[0], M_Imp, Waypoints));
 		break;
 	case eEnemies::ArmoredImp:
 		if (name == "") name = "ArmoredImp";
-		enemies.emplace_back(std::make_unique<Enemy>(meshes[34].get(), name, Waypoints[0], M_ArmoredImp));
+		enemies.emplace_back(std::make_unique<Enemy>(meshes[34].get(), name, Waypoints[0], M_ArmoredImp, Waypoints));
 		break;
 	}
-	//enemies.emplace_back(std::make_unique<Enemy>(EnemyInit));
 	enemycount++;
 }
 
@@ -172,7 +169,7 @@ int World::Step()
 	//enemy updates
 	for (int i = 0; i < enemycount; i++)
 	{
-		enemies[i]->Update(Waypoints, dt);
+		enemies[i]->Update(dt);
 	}
 	
 	//spit out frames
@@ -194,7 +191,7 @@ void World::Update()
 	for (int i = 0; i < enemycount; i++)
 	{
 		//enemy at cor is in range of tower
-		std::cout << "Enemy " << enemies[i]->name << " at " << enemies[i]->cor.x << "/" << enemies[i]->cor.y << 
+		std::cout << "Enemy " << enemies[i]->name << " at " << (int)enemies[i]->cor.x << "/" << (int)enemies[i]->cor.y << 
 			" has " << enemies[i]->GetHp() << " hp left." << std::endl;
 	}
 

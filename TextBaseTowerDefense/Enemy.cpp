@@ -6,7 +6,8 @@ Enemy::Enemy(EnemyCtorList)
 	hp(hp),
 	speed(speed),
 	armor(armor),
-	killvalue(killvalue)
+	killvalue(killvalue),
+	Waypoints(Waypoints)
 {
 	std::cout << "Enemy " << name << " created." << std::endl;
 }
@@ -16,22 +17,29 @@ Enemy::~Enemy()
 	std::cout << "Enemy " << name << " destroyed." << std::endl;
 }
 
-void Enemy::Update(const std::vector<Vec2<float>>& Waypoints, float dt)
+void Enemy::Update(float dt)
 {
 	if (hp <= 0)
 	{
 		destroy = true;
 		std::cout << name << " died." << std::endl;
 	}
-	Walk(Waypoints, dt);
+
+	if (cor.isClose(Waypoints[nextWaypoint], 5.0f))	nextWaypoint++;
+	if (nextWaypoint >= 6) nextWaypoint = 6;
+	Walk(dt);
 }
 
-void Enemy::Walk(const std::vector<Vec2<float>>& Waypoints, float dt)
+void Enemy::Walk(float dt)
 {
+	//check path
+	//move
+
+
 	//move to Vec2(end)
 	//speed*dt
 	//calculate new cor
-	cor = cor.Move(this->cor, Waypoints.back(), speed*dt);
+	cor = cor.Move(this->cor, Waypoints[nextWaypoint], speed*dt);
 	//std::cout << "Enemy " << speed * dt;// << std::endl;
 }
 
@@ -53,10 +61,4 @@ int Enemy::GetArmor()
 void Enemy::TakeDamage(int dmg)
 {
 	hp -= dmg;
-}
-
-void Enemy::Walk()
-{
-	//check path
-	//move
 }

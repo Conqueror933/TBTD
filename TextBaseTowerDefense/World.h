@@ -10,7 +10,7 @@
 class World
 {
 public:
-	World(std::vector<Vec2<float>> Waypoints, float gridsize = 10.0f, float squaresize = 1.0f, int lifes = 50);
+	World(const std::vector<Vec2<float>> Waypoints, float gridsize = 10.0f, float squaresize = 1.0f, int lifes = 50);
 	~World();
 	void SpawnTower(Vec2<float> cor, eTowers etower, std::string name = "");
 	void SpawnEnemy(eEnemies eenemy, std::string name = "");
