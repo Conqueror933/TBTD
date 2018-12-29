@@ -24,6 +24,47 @@ int main()
 */
 
 /*
+	UNIT PATHING
+
+ISSUES:
+- grid base needed for smooth A*?
+- collision detection needed
+- collision between circle (Enemy) and square (tower)
+- different sizes for enemies:
+	- for towers that are 2x2 with holes between them how does that interact
+		o o o o o
+		x x o o o
+		x x o x x
+		o o o x x
+		o o o o o
+- on an integer grid, do units just move 1 square every 1-5sec? can i make them move smoothly instead?
+	- otherwise towerrange in float doesn't make sense either,
+	- also usually in TDs units move smoothly and dont just jump a square every set amount of time
+	- also how will different movespeeds work?
+	- do cells actually exist? and hold their contents?
+		- would fuck over everything ive coded so far, completly throws of the design i was going for
+	- or are cells just a construct for pathfinding?
+
+- in general how should tower placing work?
+	- entirely free placing without any concept of a grid might be awkward (especially cause no graphics interface == no mouse input)
+	- could also make holes between towers everywhere,
+		- which in turn makes pathfinding even harder
+
+SOLUTIONS IDEAS/SUGGESTIONS:
+- could code that weird octagon map splitting into parts thing, makes artifical squares
+
+
+SOLUTIONS:
+- make artifical grid for tower placing and pathfinding, making tower.cor an int, but keep enemy.cor float so they can move smoothly,
+- enemies get a vector of waypoints (which are the grid.cor from the artifical grid)
+
+
+- A* sets up node points
+
+
+*/
+
+/*
 		TOWER
 
 PARAMS:		targets, atks, dmg, atkspeed, minrange, maxrange, price, smart_targeting, apply debuff, ...

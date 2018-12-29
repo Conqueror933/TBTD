@@ -108,7 +108,10 @@ public: //Utility
 		//std::cout << "moved to " << start.x + x_dist << "/" << start.y + y_dist << std::endl;
 		return Vec2<T>{start.x + x_dist, start.y + y_dist};
 	}
-
+	//std::ostream& operator<<(std::ostream& o, const Vec2<T>& t)
+	//{
+	//	return o << t.x << ":" << t.y;
+	//}
 private:
 	T x;
 	T y;
