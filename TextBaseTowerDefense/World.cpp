@@ -148,6 +148,7 @@ int World::Step()
 		towers[i]->time_passed += dt;
 	}
 
+	//dead enemy removal
 	for (int i = 0; i < enemycount;)
 	{
 		if (!enemies.empty())
@@ -164,11 +165,13 @@ int World::Step()
 		}
 	}
 
+	//enemy updates
 	for (int i = 0; i < enemycount; i++)
 	{
 		enemies[i]->Update(*end, dt);
 	}
 	
+	//spit out frames
 	time_passed += dt;
 	if (time_passed > 1.0f)
 	{
