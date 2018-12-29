@@ -19,25 +19,6 @@ public:	//Ctor, Dtor, Copy, Move
 	Vec2& operator= (Vec2&& rhs);
 	~Vec2() = default;*/
 
-public: //Access
-	Vec2 GetVec2()
-	{
-		return this;
-	}
-	void SetVec2(T in_x, T in_y)
-	{
-		x = in_x;
-		y = in_y;
-	}
-	T GetX()
-	{
-		return x;
-	}
-	T GetY()
-	{
-		return y;
-	}
-
 public: //Math
 	Vec2<T> operator+(const Vec2<T>& rhs)
 	{
@@ -112,7 +93,7 @@ public: //Utility
 	//{
 	//	return o << t.x << ":" << t.y;
 	//}
-private:
+public:
 	T x;
 	T y;
 };

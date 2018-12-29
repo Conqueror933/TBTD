@@ -16,7 +16,7 @@ public:
 	}
 	void Go();
 private:
-	const std::vector<Vec2<float>> Waypoints = //Start = bottomleft {x,y}
+	std::vector<Vec2<float>> Waypoints = //Start = bottomleft {x,y}
 	{ { 0.0f,0.0f },{ 0.0f,100.0f },{ 100.0f,100.0f },{ 100.0f,50.0f },{ 150.0f,50.0f },{ 150.0f,200.0f },{ 200.0f,200.0f }, };
-	World world{ 200.0f, 200.0f, 50, Waypoints };
+	World world{ Waypoints };
 };

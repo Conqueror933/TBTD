@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+//#include <vector>
 #include <memory>
 #include "Tower.h"
 #include "Enemy.h"
@@ -7,11 +7,10 @@
 #include "FrameTimer.h"
 #include "Enums.h"
 
-#define WorldCtorList float width, float height, int lifes,const std::vector<Vec2<float>> Waypoints
 class World
 {
 public:
-	World(WorldCtorList);
+	World(std::vector<Vec2<float>> Waypoints, float gridsize = 10.0f, float squaresize = 1.0f, int lifes = 50);
 	~World();
 	void SpawnTower(Vec2<float> cor, eTowers etower, std::string name = "");
 	void SpawnEnemy(eEnemies eenemy, std::string name = "");
@@ -21,11 +20,14 @@ public:
 
 private:
 	float time_passed = 0.0f;
+	float time_step = 1.0f;
 	int lifes;
 	int towercount = 0;
 	int enemycount = 0;
 	FrameTimer ft;
-	Vec2<float> size;
+	Vec2<float> worldsize = { 100.0f,100.0f };
+	float gridsize;
+	float squaresize;
 	const std::vector<Vec2<float>> Waypoints;
 	std::vector<std::unique_ptr<Mesh>> meshes;
 	std::vector<std::unique_ptr<Tower>> towers;

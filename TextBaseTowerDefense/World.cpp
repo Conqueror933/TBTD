@@ -1,11 +1,17 @@
 #include "World.h"
 
-World::World(WorldCtorList)
+World::World(std::vector<Vec2<float>> Waypoints, float gridsize, float squaresize, int lifes)
 	:
-	size(width, height),
-	lifes(lifes),
-	Waypoints(Waypoints)
+	Waypoints(Waypoints),
+	gridsize(gridsize),
+	squaresize(squaresize),
+	lifes(lifes)
 {
+	for (int i = 0; i < Waypoints.size(); i++)
+	{
+		if (Waypoints[i].x > worldsize.x) worldsize.x = Waypoints[i].x ;
+		if (Waypoints[i].y > worldsize.y) worldsize.y = Waypoints[i].y ;
+	}
 
 	for (int i = 0; i < 35; i++)
 	{
@@ -171,7 +177,7 @@ int World::Step()
 	
 	//spit out frames
 	time_passed += dt;
-	if (time_passed > 1.0f)
+	if (time_passed > time_step)
 	{
 		Update();
 		std::cout << "\n";
@@ -188,7 +194,7 @@ void World::Update()
 	for (int i = 0; i < enemycount; i++)
 	{
 		//enemy at cor is in range of tower
-		std::cout << "Enemy " << enemies[i]->name << " at " << enemies[i]->cor.GetX() << "/" << enemies[i]->cor.GetY() << 
+		std::cout << "Enemy " << enemies[i]->name << " at " << enemies[i]->cor.x << "/" << enemies[i]->cor.y << 
 			" has " << enemies[i]->GetHp() << " hp left." << std::endl;
 	}
 
