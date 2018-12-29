@@ -17,7 +17,7 @@ Enemy::~Enemy()
 	std::cout << "Enemy " << name << " destroyed." << std::endl;
 }
 
-void Enemy::Update(float dt)
+int Enemy::Update(float dt)
 {
 	if (hp <= 0)
 	{
@@ -26,8 +26,17 @@ void Enemy::Update(float dt)
 	}
 
 	if (cor.isClose(Waypoints[nextWaypoint], 0.0f)) nextWaypoint++;	//0.0f because i dont need room for error with rasterrails
-	if (nextWaypoint >= 6) nextWaypoint = 6;
-	Walk(dt);
+	if (nextWaypoint >= Waypoints.size()) nextWaypoint = Waypoints.size() - 1u;
+	if (cor == Vec2<float>{-1.0f, -1.0f})
+	{
+		destroy = true;
+		return 1;
+	}
+	else
+	{
+		Walk(dt);
+		return 0;
+	}
 }
 
 void Enemy::Walk(float dt)

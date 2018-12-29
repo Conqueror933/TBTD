@@ -11,7 +11,7 @@ public:
 	~Enemy();
 
 public:
-	void Update(float dt);
+	int Update(float dt);
 
 public:
 	bool GetDestroy();
@@ -24,7 +24,7 @@ private:
 
 private:
 	const std::vector<Vec2<float>>& Waypoints;
-	int nextWaypoint = 1;
+	unsigned int nextWaypoint = 1u;
 	int hp;
 	float speed;
 	int armor;

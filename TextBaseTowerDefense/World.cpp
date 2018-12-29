@@ -169,7 +169,7 @@ int World::Step()
 	//enemy updates
 	for (int i = 0; i < enemycount; i++)
 	{
-		enemies[i]->Update(dt);
+		lifes -= enemies[i]->Update(dt);
 	}
 	
 	//spit out frames
@@ -194,7 +194,7 @@ void World::Update()
 		std::cout << "Enemy " << enemies[i]->name << " at " << /*(int)*/enemies[i]->cor.x << "/" << /*(int)*/enemies[i]->cor.y << 
 			" has " << enemies[i]->GetHp() << " hp left." << std::endl;
 	}
-
+	std::cout << "lifes left: " << lifes << std::endl;
 	//std::cout << "Enemy " << name << " has " << hp << " left." << std::endl;
 	//print out all the damn stats
 	//Tower cor //could also do this differently
