@@ -26,6 +26,7 @@ void Game::Go()
 			std::cout << "What Tower do you wanna place? " << std::endl;
 			std::cout << "pick a number from 0 - 17 " << std::endl;
 			int t; std::cin >> t;
+			//check if player has enough money
 			std::cout << "Where do you wanna place the Tower? " << std::endl;
 			std::cout << "enter x: " << std::endl;
 			float x; std::cin >> x;
