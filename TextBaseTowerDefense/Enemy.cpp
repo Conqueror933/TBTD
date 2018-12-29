@@ -25,7 +25,7 @@ void Enemy::Update(float dt)
 		std::cout << name << " died." << std::endl;
 	}
 
-	if (cor.isClose(Waypoints[nextWaypoint], 5.0f))	nextWaypoint++;
+	if (cor.isClose(Waypoints[nextWaypoint], speed)) nextWaypoint++;	//speed here is prolly a bad idea, gotta fix Vec2 first tho
 	if (nextWaypoint >= 6) nextWaypoint = 6;
 	Walk(dt);
 }

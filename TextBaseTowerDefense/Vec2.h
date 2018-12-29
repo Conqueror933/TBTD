@@ -63,13 +63,13 @@ public: //Comparison
 	}
 
 public: //Utility
-	float Distance(const Vec2<T> target)
+	float Distance(const Vec2<T> target)	//this is shit and wrong
 	{
 		if (x < target.x)
 		{
 			if (y < target.y)
 			{
-				return (target.x - x) + (y - target.y);
+				return (target.x - x) + (target.y - y);
 			}
 			return (target.x - x) + (y - target.y);
 		}
@@ -83,7 +83,7 @@ public: //Utility
 		}
 		
 	}
-	Vec2<T> Move(const Vec2<T> start, const Vec2<T> end, float speed)
+	Vec2<T> Move(const Vec2<T> start, const Vec2<T> end, float speed)	//this is shit and wrong
 	{
 		float x_dist = end.x - start.x;
 		float y_dist = end.y - start.y;
