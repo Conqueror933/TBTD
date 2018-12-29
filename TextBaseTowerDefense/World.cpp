@@ -30,62 +30,80 @@ void World::SpawnTower(Vec2<float> cor, eTowers etower, std::string name)
 	switch (etower)
 	{
 	case eTowers::BaseTowerLvl1:
+		if (name == "") name = "BaseTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[0].get(), name, cor, M_BaseTowerLvl1));
 		break;
 	case eTowers::BaseTowerLvl2:
+		if (name == "") name = "BaseTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[1].get(), name, cor, M_BaseTowerLvl2));
 		break;
 	case eTowers::BaseTowerLvl3:
+		if (name == "") name = "BaseTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[2].get(), name, cor, M_BaseTowerLvl3));
 		break;
 
 	case eTowers::AOETowerLvl1:
+		if (name == "") name = "AOETower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[3].get(), name, cor, M_AOETowerLvl1));
 		break;
 	case eTowers::AOETowerLvl2:
+		if (name == "") name = "AOETower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[4].get(), name, cor, M_AOETowerLvl2));
 		break;
 	case eTowers::AOETowerLvl3:
+		if (name == "") name = "AOETower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[5].get(), name, cor, M_AOETowerLvl3));
 		break;
 
 	case eTowers::MultishotTowerLvl1:
+		if (name == "") name = "MultishotTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[6].get(), name, cor, M_MultishotTowerLvl1));
 		break;
 	case eTowers::MultishotTowerLvl2:
+		if (name == "") name = "MultishotTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[7].get(), name, cor, M_MultishotTowerLvl2));
 		break;
 	case eTowers::MultishotTowerLvl3:
+		if (name == "") name = "MultishotTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[8].get(), name, cor, M_MultishotTowerLvl3));
 		break;
 
 	case eTowers::SniperTowerLvl1:
+		if (name == "") name = "SniperTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[9].get(), name, cor, M_SniperTowerLvl1));
 		break;
 	case eTowers::SniperTowerLvl2:
+		if (name == "") name = "SniperTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[10].get(), name, cor, M_SniperTowerLvl2));
 		break;
 	case eTowers::SniperTowerLvl3:
+		if (name == "") name = "SniperTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[11].get(), name, cor, M_SniperTowerLvl3));
 		break;
 
 	case eTowers::BurnTowerLvl1:
+		if (name == "") name = "BurnTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[12].get(), name, cor, M_BurnTowerLvl1));
 		break;
 	case eTowers::BurnTowerLvl2:
+		if (name == "") name = "BurnTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[13].get(), name, cor, M_BurnTowerLvl2));
 		break;
 	case eTowers::BurnTowerLvl3:
+		if (name == "") name = "BurnTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[14].get(), name, cor, M_BurnTowerLvl3));
 		break;
 
 	case eTowers::ShockTowerLvl1:
+		if (name == "") name = "ShockTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[15].get(), name, cor, M_ShockTowerLvl1));
 		break;
 	case eTowers::ShockTowerLvl2:
+		if (name == "") name = "ShockTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[16].get(), name, cor, M_ShockTowerLvl2));
 		break;
 	case eTowers::ShockTowerLvl3:
+		if (name == "") name = "ShockTower";
 		towers.emplace_back(std::make_unique<Tower>(meshes[17].get(), name, cor, M_ShockTowerLvl3));
 		break;
 

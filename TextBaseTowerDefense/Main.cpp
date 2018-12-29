@@ -11,7 +11,7 @@ int main()
 }
 //TO-DO list / BUG list
 /*
-change tower name bullshit to be like enemy
+
 */
 
 //STUFF TO IMPLEMENT
